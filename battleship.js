@@ -17,7 +17,29 @@ var model = {
     numShips: 3,
     shipLength: 3,
     shipsSunk: 0,
-    ships: [{locations: ["06", "16", "26"], hits: ["", "", ""]}, {locations: ["24", "34", "44"], hits: ["", "", ""]},{locations: ["12", "11", "12"], hits: ["", "", ""]},]
+    ships: [{locations: ["06", "16", "26"], hits: ["", "", ""]}, {locations: ["24", "34", "44"], hits: ["", "", ""]},{locations: ["12", "11", "12"], hits: ["", "", ""]}],
+    fire: function(guess) {
+        for (var i=0; i<this.numShips;i++) {
+            var ship = this.ships[i];
+            var index = ship.locations.indexOf(guess);
+            if (index>=0) {
+                ship.hits[index] = "hit";
+                if (this.shipsSunk(ship)) {
+                    this.shipsSunk++;
+                }
+                return true;
+            }
+        }
+        return false;
+    },
+    isSunk: function(ship) {
+        for (var i =o;i<this.shipLength;i++) {
+            if (ship.hits[i] !== "hit") {
+                return false;
+            }
+        }
+        return true;
+    },
 };
 view.displayMiss('00');
 view.displayHit('34');
