@@ -46,10 +46,26 @@ var model = {
         return true;
     },
 };
-view.displayMiss('00');
-view.displayHit('34');
-view.displayMiss('55');
-view.displayHit('12');
-view.displayMiss('25');
-view.displayHit('26');
-view.displayMessage("hello!")
+var controller = {
+    guesses: 0,
+    processGuess: function(guess) { 
+    } 
+};
+function paraseGuess(guess) {
+    var alphabet = ["A","B","C","D","E","F","G"];
+    if (guess === null || guess.length !== 2) {
+        alert("Oops, please enter a letter and a number on the board");
+    } else {
+        firstChar = guess.charAt(0);
+        var row = alphabet.indexOf(firstChar);
+        var column = guess.charAt(1);
+        if (isNaN(row) || isNaN(column)) {
+            alert("Oops, that isn't on the board");
+        } else if (row<0||row>=model.boardSize||column<0||column>=model.boardSize){
+            alert("Oops, that's off the board!");
+        } else {
+            return row + column;
+        }
+    }
+    return null;
+};
