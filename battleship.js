@@ -49,6 +49,14 @@ var model = {
 var controller = {
     guesses: 0,
     processGuess: function(guess) { 
+        var location = paraseGuess(guess);
+        if (location) {
+            this.guesses++;
+            var hit = model.fire(location);
+            if (hit && model.shipsSunk === model.Ships) {
+                view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
+            }
+        }
     } 
 };
 function paraseGuess(guess) {
@@ -69,3 +77,4 @@ function paraseGuess(guess) {
     }
     return null;
 };
+
