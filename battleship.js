@@ -81,7 +81,7 @@ function init() {
     var fireButton = document.getElementById("fireButton");
     fireButton.onclick = handleFireButton;
     var guessInput = document.getElementById("guessInput");
-    guessInput.onkeyprogress = handleKeyPress;
+    guessInput.onkeypress = handleKeyPress;
 };
 function handleFireButton() {
     var guessInput = document.getElementById("guessInput");
