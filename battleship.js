@@ -17,7 +17,7 @@ var model = {
     numShips: 3,
     shipLength: 3,
     shipsSunk: 0,
-    ships: [{locations: ["0", "0", "0"], hits: ["", "", ""]}, {locations: ["0", "0", "0"], hits: ["", "", ""]},{locations: ["0", "0", "0"], hits: ["", "", ""]}],
+    ships: [{locations: [0,0,0], hits: ["", "", ""]}, {locations: [0, 0, 0], hits: ["", "", ""]},{locations: [0, 0, 0], hits: ["", "", ""]}],
     fire: function(guess) {
         for (var i=0; i<this.numShips;i++) {
             var ship = this.ships[i];
@@ -74,7 +74,7 @@ var model = {
         }
         return newShipLocations;
     },
-    collision: function() {
+    collision: function(locations) {
         for (var i=0; i<this.numShips;i++) {
             var ship = model.ships[i];
             for (var j=0;j<locations.length;j++) {
